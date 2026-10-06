@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Listing</title>
+</head>
+
+<body>
+
+<h1>Student Data Listing</h1>
+
+<form method="GET">
+
+    <input
+        type="text"
+        name="search"
+        placeholder="Search by name"
+    >
+
+    <select name="department">
+
+        <option value="">All Departments</option>
+
+        {% for dept in departments %}
+            <option value="{{ dept }}">
+                {{ dept }}
+            </option>
+        {% endfor %}
+
+    </select>
+
+    <button type="submit">Search</button>
+
+</form>
+
+<br>
+
+<table border="1" cellpadding="10">
+
+    <tr>
+        <th>Name</th>
+        <th>Department</th>
+        <th>Age</th>
+        <th>City</th>
+    </tr>
+
+    {% for student in students %}
+
+    <tr>
+        <td>{{ student.name }}</td>
+        <td>{{ student.department }}</td>
+        <td>{{ student.age }}</td>
+        <td>{{ student.city }}</td>
+    </tr>
+
+    {% empty %}
+
+    <tr>
+        <td colspan="4">No students found</td>
+    </tr>
+
+    {% endfor %}
+
+</table>
+
+</body>
+</html>
